@@ -1,0 +1,8 @@
+
+<launch>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project_shark)/rviz/rplidar.rviz" />
+  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" />
+  <node name="view_wheels_speed" pkg="project_shark" type="view_wheels_speed.py" output="screen"/>
+  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0.195 0 0.145 0 0 0 base_link laser_link 100" />
+
+</launch>
