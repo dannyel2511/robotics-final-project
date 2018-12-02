@@ -32,11 +32,15 @@ In the following sections, there are some explanations to start the robot and se
         ```sh
         sudo apt-get install ros-kinetic-teleop-twist-keyboard
         ```
-* Semiautonomous navigation
+* Semi and full autonomous navigation
     * In the onboard computer, install the **RPLIDAR node**. Follow the steps in [Install RPLIDAR node](https://github.com/robopeak/rplidar_ros)
     * Install the **hector_slam** package
         ```sh
         sudo apt-get install ros-kinetic-hector-slam ros-kinetic-hector-geotiff ros-kinetic-hector-geotiff-plugins
+        ```
+    * Install the **nav2d package**
+        ```sh
+        apt-get install ros-kinetic-nav2d
         ```
 # Manual operation
 
@@ -55,10 +59,29 @@ Press and hold the joystick to activate the manual operation. Then, move it in t
 **4. To stop the manual operation release the joystick**
 The robot will stop responding to the manual operation. Then, you can turn off both switches to save energy.
 
-## Teleoperation
+# Teleoperation
+It is possible to control the robot from a remote computer, the only requirement is that both computers (remote PC and onboard computer) are connected to the same network. Follow these steps to start the teleoperation mode of the robot.
+**1. Connect both computers to the same network (LAN)**. Verify that they can communicate each other by doing a ping to the IP assigned.
+**2.Modifyt the ```.bashrc``` in both computers**. You need to indicate where the ROSCORE will be running, in this case it will run on the PC. Moreover, the onboard computer has to be able to communicate with it. To do this, it is neccesary to change three ROS environment variables. Run this commands:
+**On PC**
+```sh
+echo "export ROS_IP=Your_PC_IP" >> ~/.bashrc
+echo "export ROS_HOSTNAME=Your_PC_IP" >> ~/.bashrc
+echo "export ROS_MASTER_URI=http://Your_PC_IP:11311" >> ~/.bashrc
+source ~/.bashrc
+```
+**On the onboard computer**
+```sh
+echo "export ROS_IP=Your_Raspberry_IP" >> ~/.bashrc
+echo "export ROS_HOSTNAME=Your_Raspberry_IP" >> ~/.bashrc
+echo "export ROS_MASTER_URI=http://Your_PC_IP:11311" >> ~/.bashrc
+source ~/.bashrc
+```
+**_Note_**: Substitute Your_PC_IP and Your_Raspberry_IP by the corresponding values. You need to run these instructions every time your network parameters change. If you are using static IPs, you do not need to worry about running these commands more than once.
+
 ## Semi autonomous operation
 The semiautonomous operation consists in avoiding obstacles by modifying the initial route of the robot. It is achieved by getting data from the environment using a RPLIDAR camera and using this data to make a planning of the route. To do this, the nav2d package is necessary.
-
+Follow these steps to start running
 1. Go to yout catkin_ws
 ```sh
 $ cd ~/catkin_ws
@@ -73,6 +96,3 @@ $ catkin_make
 > Andres Cortez Villao
 > Rodrigo Herrera Ponce
 > Luis Rodrigo Garcia Hernandez
-
-
-
