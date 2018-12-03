@@ -163,6 +163,7 @@ Once the map is finished, you can use it in the RVIZ to indicate the goal to the
 ![Set goal](https://i.imgur.com/THJgdWkl.png)
 
 After that, the robot will start moving trying to reach the goal. You will see in the RVIZ the planned trajectory (line in color pink).
+
 ![Trajectory](https://i.imgur.com/pTABlqdl.png)
 
 ### Created by
