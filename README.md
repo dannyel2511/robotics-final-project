@@ -5,7 +5,7 @@ This repository contains the files used to program the robot and control its ope
 ![Imagen del robot](https://i.imgur.com/9DvviGGl.jpg)
 
 
-In the following sections, there are some explanations to start the robot and set the environment in the PC and onboard computer to run the project-shark package, included in this repository. You can read more information about how the robot was built reading the Report.pdf.
+In the following sections, there are some explanations to start the robot and set the environment in the PC and onboard computer to run the project-shark package, included in this repository. You can read more information about how the robot was built in the Report.pdf.
 
 ## Previous requeriments
 * Install the Arduino IDE.
@@ -114,7 +114,7 @@ anything else : stop
 CTRL-C to quit
 ```
 
-## Semi autonomous operation
+# Semi autonomous operation
 The semiautonomous operation consists in avoiding obstacles by modifying the initial route of the robot. It is achieved by getting data from the environment using a RPLIDAR camera and using this data to make a planning of the route. To do this, the nav2d package is necessary.
 Follow these steps to start the semi-autonomous operation:
 **1. Execute the steps from 1 to 4 from the [Teleoperation section](#teleoperation)**
@@ -135,7 +135,7 @@ Use the keys to move the robot around:
  Press Space to stop the robot.
 ```
 
-## Autonomous operation
+# Autonomous operation
 **1. Execute the steps from 1 to 4 from the [Teleoperation section](#teleoperation)**
 
 **2. Launch the ROS nodes on the PC**
